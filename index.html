@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Countdown Timer</title>
+    <style>
+        body{
+            background-color: #3a0b62;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">The Countdown</h2>
+<h1 style="text-align: center;"></h1>
+
+
+<script>
+
+let element = document.querySelector('h1')
+
+let countTill = new Date("Mar 14 2024 21:04:00").getTime()
+
+setInterval(() => {
+
+    let nowTime = new Date().getTime()
+    let time = countTill - nowTime
+    let days = Math.floor( time / (1000 * 60 * 60 * 24) )
+    let hours = Math.floor( (time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) )
+    let minutes = Math.floor( (time % (1000 * 60 * 60)) / (1000 * 60) )
+    let seconds = Math.floor((time % (1000 * 60)) / 1000)
+
+    console.log(time)
+
+    element.innerHTML = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds '
+
+    if(time < 0){
+        element.innerHTML = "Time is up!!!"
+    }
+    
+}, 1000);
+
+
+</script>
+
+</body>
+</html>
