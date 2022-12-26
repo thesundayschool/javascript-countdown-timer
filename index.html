@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Countdown Timer</title>
-    <style>
-        body{
-            background-color: #3a0b62;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<h2 style="text-align: center;">The Countdown</h2>
-<h1 style="text-align: center;"></h1>
+    <div class="container">
+        <h1 style="text-align: center;">Javascript Countdown Timer</h1>
+        <div class="targetelement">
+            <div class="box">
+                <div id="days"></div>
+                <div class="title">Days</div>
+            </div>
+            <div class="box">
+                <div id="hours"></div>
+                <div class="title">Hours</div>
+            </div>
+            <div class="box">
+                <div id="minutes"></div>
+                <div class="title">Minutes</div>
+            </div>
+            <div class="box">
+                <div id="seconds"></div>
+                <div class="title">Seconds</div>
+            </div>
+        </div>
+        <div class="targetdate">Taget Date : Aug 15 2023 10:00:00</div>
+
+        
+    </div>
+    <div class="footer">Build by <a href="https://sundayschool.co.in/" target="_blank">Sunday School</a>, more projects @ <a href="https://workspace.sundayschool.co.in/" target="_blank">Workspace</a></div>
 
 
-<script>
+    <script>
 
-let element = document.querySelector('h1')
+        let element = document.querySelector('.targetelement')
 
-let countTill = new Date("Mar 14 2024 21:04:00").getTime()
+        let countTill = new Date("Aug 15 2023 10:00:00").getTime()
 
-setInterval(() => {
+        setInterval(() => {
 
-    let nowTime = new Date().getTime()
-    let time = countTill - nowTime
-    let days = Math.floor( time / (1000 * 60 * 60 * 24) )
-    let hours = Math.floor( (time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) )
-    let minutes = Math.floor( (time % (1000 * 60 * 60)) / (1000 * 60) )
-    let seconds = Math.floor((time % (1000 * 60)) / 1000)
+            let nowTime = new Date().getTime()
+            let time = countTill - nowTime
+            let days = Math.floor(time / (1000 * 60 * 60 * 24))
+            let hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+            let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))
+            let seconds = Math.floor((time % (1000 * 60)) / 1000)
 
-    console.log(time)
+            console.log(nowTime)
 
-    element.innerHTML = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds '
+            document.querySelector('#days').innerText = days
+            document.querySelector('#hours').innerText = hours
+            document.querySelector('#minutes').innerText = minutes
+            document.querySelector('#seconds').innerText = seconds
 
-    if(time < 0){
-        element.innerHTML = "Time is up!!!"
-    }
-    
-}, 1000);
+            // element.innerHTML = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds '
+
+            if (time < 0) {
+                element.innerHTML = "Time is up!!!"
+            }
+
+        }, 1000);
 
 
-</script>
+    </script>
 
 </body>
+
 </html>
